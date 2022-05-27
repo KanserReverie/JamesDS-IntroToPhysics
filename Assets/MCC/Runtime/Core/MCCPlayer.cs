@@ -115,23 +115,40 @@ namespace MCC
 			// If this player is the localPlayer THEN enable the input system.
 			input.gameObject.SetActive(isLocalPlayer);
 			
+			// Cycle through all behaviours on the player.
 			behaviours.ForEach(_behaviour =>
 			{
+				// If the behaviour is local only and this is the local player (networking).
 				if(_behaviour.LocalOnly && isLocalPlayer)
 				{
+					// Initialise this behaviour.
 					_behaviour.Init(this);
 				}
+				// If this behaviours is not local only and this isn't the local player.
 				else
 				{
+					// Turn off this behaviour gameObject.
 					_behaviour.Enabled = false;
 				}
 			});
 		}
 
+		/// <summary>
+		/// Called each Update.
+		/// Cycle through all the behaviours and run any processes(Update).
+		/// </summary>
 		private void Update() => behaviours.ForEach(_behaviour => _behaviour.Process(UpdatePhase.Update));
 
+		/// <summary>
+		/// Called each FixedUpdate.
+		/// Cycle through all the behaviours and run any processes(FixedUpdate).
+		/// </summary>
 		private void FixedUpdate() => behaviours.ForEach(_behaviour => _behaviour.Process(UpdatePhase.FixedUpdate));
 
+		/// <summary>
+		/// Called each LateUpdate.
+		/// Cycle through all the behaviours and run any processes(LateUpdate).
+		/// </summary>
 		private void LateUpdate() => behaviours.ForEach(_behaviour => _behaviour.Process(UpdatePhase.LateUpdate));
 	}
 }
