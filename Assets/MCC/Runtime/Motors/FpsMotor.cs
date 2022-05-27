@@ -86,10 +86,7 @@ namespace MCC.Motors
 			settings.JumpAction.canceled += OnJumpCanceled;
 		}
 
-		/// <summary>
-		/// This is the Processes that need to be run.
-		// TODO Make sure this component is in "Fixed Update"!!!
-		/// </summary>
+		/// <summary> This is the Processes that need to be run.</summary>
 		protected override void OnProcess()
 		{
 			// Do a ground check to check if the player is grounded.
@@ -155,11 +152,14 @@ namespace MCC.Motors
 			Vector3 right = player.right * _axis.x; // Since the player is on an the gound we need to change the input directions.
 			Vector3 desiredVelocity = (forward + right) * (maxSpeed * modifier) - Rigidbody.velocity; // This is the velocity we want the player to be at
 
-			Debug.Log($"desiredVelocity = {desiredVelocity}");
+			Debug.Log($"desiredVelocity = {desiredVelocity} |\n| CanMoveInDirection(desiredVelocity) = {CanMoveInDirection(desiredVelocity)}");
 			// Check we can move this way, if we can apply the velocity
 			if(CanMoveInDirection(desiredVelocity))
-				// Addes force in the horizontal plane to 
-				Rigidbody.AddForce(new Vector3(desiredVelocity.x, 0, desiredVelocity.z), ForceMode.Impulse);
+			{
+				// Addes force in the horizontal plane to player.
+				Rigidbody.AddForce(new Vector3(desiredVelocity.x, 0, desiredVelocity.z), ForceMode.VelocityChange);
+				//Rigidbody.velocity = new Vector3(desiredVelocity.x, 0, desiredVelocity.z);
+			}
 		}
 
 		/// <summary>
