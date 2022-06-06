@@ -5,6 +5,7 @@
 	/// </summary>
 	public enum UpdatePhase
 	{
+		Any,
 		Update,
 		FixedUpdate,
 		LateUpdate
