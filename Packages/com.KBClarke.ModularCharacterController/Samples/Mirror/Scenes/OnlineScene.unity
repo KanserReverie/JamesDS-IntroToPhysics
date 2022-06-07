@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 447745787}
   - component: {fileID: 447745786}
   m_Layer: 6
-  m_Name: Plane (1)
+  m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -176,7 +176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8319ba0809765bb4990cec89e62f2117, type: 2}
+  - {fileID: 2100000, guid: 7b6f368929b2e7942a685beb0f9ccc1f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -328,7 +328,7 @@ GameObject:
   - component: {fileID: 861431335}
   - component: {fileID: 861431334}
   m_Layer: 7
-  m_Name: Cube
+  m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,7 +367,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 292c9301287b2984bbf330004182dd5f, type: 2}
+  - {fileID: 2100000, guid: 9a2e1e1c55c58d24293844a13c35f006, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
