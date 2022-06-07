@@ -3,7 +3,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace MCC.Cameras
+namespace ModularCharacterController.Cameras
 {
 	public class MultiCamera : ModularBehaviour
 	{

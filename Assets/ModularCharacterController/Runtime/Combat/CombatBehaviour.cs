@@ -5,7 +5,7 @@ using MCC;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MCC.Combat
+namespace ModularCharacterController.Combat
 {
     public class CombatBehaviour : ModularBehaviour
     {

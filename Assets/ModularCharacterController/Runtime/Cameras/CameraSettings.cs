@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MCC.Cameras
+namespace ModularCharacterController.Cameras
 {
 	[CreateAssetMenu(fileName = "New Camera Settings", menuName = "MCC/Camera Settings", order = 0)]
 	public class CameraSettings : ScriptableObject

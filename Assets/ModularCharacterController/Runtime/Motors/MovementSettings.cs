@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MCC.Motors
+namespace ModularCharacterController.Motors
 {
 	#pragma warning disable CS0649
 	[Serializable]

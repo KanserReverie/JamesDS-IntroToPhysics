@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MCC.Cameras
+namespace ModularCharacterController.Cameras
 {
 	[RequireComponent(typeof(Camera))]
 	public class FpsCamera : ModularBehaviour

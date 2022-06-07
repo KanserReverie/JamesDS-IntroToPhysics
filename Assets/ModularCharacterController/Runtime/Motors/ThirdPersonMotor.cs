@@ -1,21 +1,26 @@
-﻿using MCC.Cameras;
+// Creator: 
+// Creation Time: 2022/06/06 12:48
+using ModularCharacterController.Cameras;
 
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MCC.Motors
+namespace ModularCharacterController.Motors
 {
-	public class FpsMotor : ModularBehaviour
+	public class ThirdPersonMotor : ModularBehaviour
 	{
 		public bool IsGrounded { get; private set; }
 		
 		public Rigidbody Rigidbody { get; private set; }
 
 		[SerializeField] private MovementSettings settings;
+
+		[SerializeField] private Transform renderTransform;
+		[SerializeField] private float renderAlignmentSpeed = 3f;
 		
 		private new CapsuleCollider collider;
 		private Transform player;
-		private new FpsCamera camera;
+		private new ThirdPersonCamera camera;
 
 		private const float SPEED_ON_GROUND_MODIFIER = 1;
 		private const float SPEED_IN_AIR_MODIFIER = 1;
@@ -29,7 +34,7 @@ namespace MCC.Motors
 			Rigidbody = _playerInterface.Rigidbody;
 			collider = (CapsuleCollider) _playerInterface.Collider;
 			player = _playerInterface.Transform;
-			if(_playerInterface.TryGetBehaviour(out FpsCamera cam))
+			if(_playerInterface.TryGetBehaviour(out ThirdPersonCamera cam))
 				camera = cam;
 
 			if(_playerInterface.TryGetBehaviour(out MultiCamera multiCamera))
@@ -95,19 +100,24 @@ namespace MCC.Motors
 			// If the camera motor isn't running right now we shouldn't be able to control the player
 			if(!camera.Enabled)
 				return;
+			
+			if(_axis.magnitude > 0)
+				renderTransform.localRotation = Quaternion.Slerp(renderTransform.localRotation, Quaternion.LookRotation(camera.transform.forward), Time.deltaTime * renderAlignmentSpeed);
 
 			// Calculate the max speed and the speed modifier by the grounded state
 			float maxSpeed = settings.GetMaxSpeed(IsGrounded);
 			float modifier = IsGrounded ? SPEED_ON_GROUND_MODIFIER : SPEED_IN_AIR_MODIFIER;
 
 			// Calculate the correct velocity by the axis of the input
-			Vector3 forward = player.forward * _axis.y;
-			Vector3 right = player.right * _axis.x;
+			Vector3 forward = camera.transform.forward * _axis.y;
+			Vector3 right = camera.transform.right * _axis.x;
 			Vector3 desiredVelocity = (forward + right) * (maxSpeed * modifier) - Rigidbody.velocity;
 
 			// Check we can move this way, if we can apply the velocity
 			if(CanMoveInDirection(desiredVelocity))
+			{
 				Rigidbody.AddForce(new Vector3(desiredVelocity.x, 0, desiredVelocity.z), ForceMode.Impulse);
+			}
 		}
 
 		/// <summary>

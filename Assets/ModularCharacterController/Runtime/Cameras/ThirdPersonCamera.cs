@@ -3,7 +3,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace MCC.Cameras
+namespace ModularCharacterController.Cameras
 {
 	public class ThirdPersonCamera : ModularBehaviour
 	{
