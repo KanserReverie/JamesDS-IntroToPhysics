@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/MCC/Samples/Mirror/Scenes/OfflineScene.unity
+    path: Packages/com.kbclarke.modularcharactercontroller/Samples/Mirror/Scenes/OfflineScene.unity
     guid: 468cd408589c34340ad84b201609a038
   - enabled: 1
-    path: Assets/MCC/Samples/Mirror/Scenes/OnlineScene.unity
+    path: Packages/com.kbclarke.modularcharactercontroller/Samples/Mirror/Scenes/OnlineScene.unity
     guid: 83030dfba0f1c7f4391611bbaf9b894f
   m_configObjects: {}

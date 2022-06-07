@@ -1,5 +1,13 @@
 {
   "dependencies": {
+    "com.kbclarke.modularcharactercontroller": {
+      "version": "file:com.KBClarke.ModularCharacterController",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {
+        "com.unity.inputsystem": "1.2.0"
+      }
+    },
     "com.unity.collab-proxy": {
       "version": "1.15.15",
       "depth": 0,
